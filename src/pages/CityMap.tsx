@@ -361,7 +361,7 @@ export const CityMap: React.FC = () => {
               <label className="flex items-center justify-between p-2 rounded-lg bg-navy-900/60 hover:bg-navy-900 cursor-pointer border border-slate-800/80 transition-colors">
                 <span className="flex items-center gap-2 text-slate-200">
                   <Droplets className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Flood Risk Zones</span>
+                  <span>Flood Zones</span>
                 </span>
                 <input
                   type="checkbox"
@@ -374,7 +374,7 @@ export const CityMap: React.FC = () => {
               <label className="flex items-center justify-between p-2 rounded-lg bg-navy-900/60 hover:bg-navy-900 cursor-pointer border border-slate-800/80 transition-colors">
                 <span className="flex items-center gap-2 text-slate-200">
                   <Car className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Traffic Congestion</span>
+                  <span>Traffic</span>
                 </span>
                 <input
                   type="checkbox"
@@ -400,7 +400,7 @@ export const CityMap: React.FC = () => {
               <label className="flex items-center justify-between p-2 rounded-lg bg-navy-900/60 hover:bg-navy-900 cursor-pointer border border-slate-800/80 transition-colors">
                 <span className="flex items-center gap-2 text-slate-200">
                   <Flame className="w-3.5 h-3.5 text-red-400" />
-                  <span>Emergency Events</span>
+                  <span>Emergency Incidents</span>
                 </span>
                 <input
                   type="checkbox"
@@ -413,7 +413,7 @@ export const CityMap: React.FC = () => {
               <label className="flex items-center justify-between p-2 rounded-lg bg-navy-900/60 hover:bg-navy-900 cursor-pointer border border-slate-800/80 transition-colors">
                 <span className="flex items-center gap-2 text-slate-200">
                   <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>IoT Sensor Grid</span>
+                  <span>IoT Sensors</span>
                 </span>
                 <input
                   type="checkbox"

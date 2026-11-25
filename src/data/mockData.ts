@@ -764,7 +764,7 @@ export const INITIAL_ALERTS: AlertNotification[] = [
 export const SIMULATION_SCENARIOS: SimulationScenario[] = [
   {
     id: 'urban_flood',
-    name: 'Urban Flood & Storm Surge',
+    name: 'Urban Flood',
     description: 'Simulates heavy rainfall (60+ mm/h), storm surge in coastal canals, rising retention basins, and road inundation.',
     icon: 'Droplets',
     targetFocus: 'Water Level Sensors & Canal Embankments',
@@ -773,7 +773,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
   },
   {
     id: 'heavy_traffic',
-    name: 'Rush Hour Gridlock & Highway Collapse',
+    name: 'Heavy Traffic',
     description: 'Simulates evening rush hour amplified by multi-vehicle collisions on key bridge & viaduct bottlenecks.',
     icon: 'Car',
     targetFocus: 'Traffic Radar Nodes & Arterial Signal Timing',
@@ -782,7 +782,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
   },
   {
     id: 'road_blockage',
-    name: 'Structural Failure & Underground Sinkhole',
+    name: 'Road Blockage',
     description: 'Simulates sudden tunnel debris spalling and underground water main rupture leading to major road closures.',
     icon: 'AlertOctagon',
     targetFocus: 'Acoustic Strain Sensors & Smart Detours',
@@ -791,7 +791,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
   },
   {
     id: 'emergency_event',
-    name: 'Industrial HazMat & Substation Blaze',
+    name: 'Emergency Event',
     description: 'Simulates critical electrical grid failure, chemical air pollution plume, and multi-agency emergency cordon.',
     icon: 'Flame',
     targetFocus: 'Thermal Sensors, Air Quality & Response Units',

@@ -37,47 +37,47 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const navItems: { id: NavPage; label: string; icon: React.FC<{ className?: string }>; badge?: string | number; badgeColor?: string }[] = [
     { 
       id: 'overview', 
-      label: 'Overview Command', 
+      label: 'Overview Dashboard', 
       icon: LayoutDashboard 
     },
     { 
       id: 'map', 
-      label: 'Interactive City Map', 
+      label: 'City Map', 
       icon: Map, 
       badge: 'Live',
       badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
     },
     { 
       id: 'incidents', 
-      label: 'Incident Manager', 
+      label: 'Incidents', 
       icon: AlertTriangle, 
       badge: kpis.activeIncidentsCount,
       badgeColor: 'bg-red-500/20 text-red-300 border-red-500/40'
     },
     { 
       id: 'sensors', 
-      label: 'IoT Sensor Fleet', 
+      label: 'IoT Sensors', 
       icon: Cpu, 
       badge: warningSensorsCount > 0 ? `${warningSensorsCount} alert` : undefined,
       badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40'
     },
     { 
       id: 'ai', 
-      label: 'AI Intelligence Engine', 
+      label: 'AI Intelligence', 
       icon: BrainCircuit, 
       badge: 'Neural',
       badgeColor: 'bg-purple-500/20 text-purple-300 border-purple-500/40'
     },
     { 
       id: 'simulation', 
-      label: 'Scenario Studio', 
+      label: 'Simulation', 
       icon: PlayCircle, 
       badge: 'Sim',
       badgeColor: 'bg-blue-500/20 text-blue-300 border-blue-500/40'
     },
     { 
       id: 'reports', 
-      label: 'Reports & Analytics', 
+      label: 'Reports', 
       icon: FileBarChart2 
     },
   ];

@@ -179,7 +179,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({ onNavigate
             onClick={() => onNavigate('incidents')}
           />
           <KpiCard
-            title="Connected IoT"
+            title="Connected IoT Sensors"
             value={`${kpis.connectedSensorsCount}/${kpis.totalSensorsCount}`}
             subtitle={`${kpis.sensorFleetHealthPercentage}% Fleet Online`}
             icon={Cpu}
@@ -324,7 +324,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({ onNavigate
                 ) : (
                   <>
                     <Sparkles className="w-4 h-4" />
-                    <span>Run Full AI City Assessment</span>
+                    <span>Analyze City</span>
                   </>
                 )}
               </button>

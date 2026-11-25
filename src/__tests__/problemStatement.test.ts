@@ -128,6 +128,14 @@ describe('Problem Statement Alignment: Urban Crisis Detection & Monitoring', () 
     }
   });
 
+  it('should include exact required simulation scenario names', () => {
+    const scenarioNames = SIMULATION_SCENARIOS.map(s => s.name);
+    expect(scenarioNames).toContain('Urban Flood');
+    expect(scenarioNames).toContain('Heavy Traffic');
+    expect(scenarioNames).toContain('Road Blockage');
+    expect(scenarioNames).toContain('Emergency Event');
+  });
+
   it('should format clean RFC-4180 CSV export containing all incident fields', () => {
     const csv = formatIncidentReportCSV(INITIAL_INCIDENTS);
     expect(csv).toContain('Incident_ID,Category,Title,Location,Severity,Status');

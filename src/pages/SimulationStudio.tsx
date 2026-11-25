@@ -82,7 +82,7 @@ export const SimulationStudio: React.FC = () => {
               className="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-navy-950 font-bold text-xs font-mono transition-all flex items-center gap-1.5 shadow-glow-cyan"
             >
               <Play className="w-4 h-4 fill-navy-950" />
-              <span>{simulation.tick > 0 ? 'Resume' : 'Start Simulation'}</span>
+              <span>{simulation.tick > 0 ? 'Resume' : 'Start'}</span>
             </button>
           ) : (
             <button
@@ -100,11 +100,12 @@ export const SimulationStudio: React.FC = () => {
             title="Reset to Baseline City State"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset Baseline</span>
+            <span>Reset</span>
           </button>
 
           {/* Speed Selectors */}
-          <div className="flex items-center gap-1 pl-2 border-l border-slate-800 text-xs font-mono">
+          <div className="flex items-center gap-1.5 pl-2 border-l border-slate-800 text-xs font-mono">
+            <span className="text-slate-400 text-[11px]">Simulation speed:</span>
             {[1, 2, 5].map((spd) => (
               <button
                 key={spd}
@@ -159,7 +160,7 @@ export const SimulationStudio: React.FC = () => {
       <div>
         <h3 className="text-sm font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
           <Layers className="w-4 h-4 text-cyan-400" />
-          Select Urban Crisis Scenario
+          <span>Scenario selector</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

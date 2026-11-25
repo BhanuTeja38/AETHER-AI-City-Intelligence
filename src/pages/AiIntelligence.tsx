@@ -93,7 +93,7 @@ export const AiIntelligence: React.FC = () => {
               ) : (
                 <>
                   <Sparkles className="w-5 h-5 text-navy-950" />
-                  <span>ANALYZE CITY NOW</span>
+                  <span>Analyze City</span>
                 </>
               )}
             </button>
@@ -124,7 +124,7 @@ export const AiIntelligence: React.FC = () => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                City Composite Risk Score
+                A. City Risk Score
               </span>
               <span className="text-[10px] font-mono text-slate-500">
                 Updated: {aiAnalysis.analyzedAt}
@@ -164,13 +164,13 @@ export const AiIntelligence: React.FC = () => {
                   <span className="text-4xl font-extrabold font-mono text-white tracking-tight">
                     {aiAnalysis.riskScore}
                   </span>
-                  <span className="text-xs font-mono text-slate-400 uppercase">/ 100 INDEX</span>
+                  <span className="text-xs font-mono text-slate-400 uppercase">/ 100</span>
                 </div>
               </div>
 
-              {/* Classification Tag */}
+              {/* B. Risk Classification */}
               <div className={`mt-4 px-4 py-1.5 rounded-full border text-xs font-mono font-bold uppercase tracking-wider ${riskColor}`}>
-                Risk Level: {aiAnalysis.riskClassification}
+                B. Risk Classification: {aiAnalysis.riskClassification}
               </div>
             </div>
           </div>
@@ -182,22 +182,22 @@ export const AiIntelligence: React.FC = () => {
           </div>
         </div>
 
-        {/* Situation Summary & Affected Areas (2 cols) */}
+        {/* C. Situation Summary & D. Affected Areas (2 cols) */}
         <div className="glass-panel rounded-2xl p-6 border border-cyan-500/20 lg:col-span-2 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-3">
               <ShieldAlert className="w-5 h-5 text-cyan-400" />
-              <h2 className="text-base font-bold text-white">Executive Situation Assessment</h2>
+              <h2 className="text-base font-bold text-white">C. Situation Summary</h2>
             </div>
 
             <p className="text-sm text-slate-200 leading-relaxed p-4 rounded-xl bg-navy-900/80 border border-slate-800 font-sans">
               {aiAnalysis.situationSummary}
             </p>
 
-            {/* Affected Areas Strip */}
+            {/* D. Affected Areas */}
             <div className="mt-4">
               <span className="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-2">
-                Districts Experiencing Critical Stress:
+                D. Affected Areas:
               </span>
               <div className="flex flex-wrap gap-2">
                 {aiAnalysis.affectedDistricts.map((dist, idx) => (
@@ -213,10 +213,10 @@ export const AiIntelligence: React.FC = () => {
             </div>
           </div>
 
-          {/* Priority Actions Bullet List */}
+          {/* F. Priority Actions */}
           <div className="mt-5 pt-4 border-t border-slate-800">
             <span className="text-xs font-mono uppercase tracking-wider text-amber-400 block mb-2">
-              Immediate Command Directives:
+              F. Priority Actions:
             </span>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {aiAnalysis.priorityActions.map((action, i) => (
@@ -232,18 +232,18 @@ export const AiIntelligence: React.FC = () => {
         </div>
       </div>
 
-      {/* Potential Impact Matrix */}
+      {/* E. Potential Impact */}
       <div>
         <h3 className="text-sm font-mono uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
           <Activity className="w-4 h-4 text-cyan-400" />
-          Multi-Sector Impact Projections
+          E. Potential Impact
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="glass-panel rounded-2xl p-5 border border-amber-500/20">
             <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold mb-2">
               <Car className="w-4 h-4" />
-              <span>TRAFFIC & MOBILITY</span>
+              <span>Traffic</span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               {aiAnalysis.potentialImpact.traffic}
@@ -253,7 +253,7 @@ export const AiIntelligence: React.FC = () => {
           <div className="glass-panel rounded-2xl p-5 border border-blue-500/20">
             <div className="flex items-center gap-2 text-blue-400 font-mono text-xs font-bold mb-2">
               <Users className="w-4 h-4" />
-              <span>CIVIC POPULATION</span>
+              <span>Citizens</span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               {aiAnalysis.potentialImpact.citizens}
@@ -263,7 +263,7 @@ export const AiIntelligence: React.FC = () => {
           <div className="glass-panel rounded-2xl p-5 border border-purple-500/20">
             <div className="flex items-center gap-2 text-purple-400 font-mono text-xs font-bold mb-2">
               <Building2 className="w-4 h-4" />
-              <span>CIVIL INFRASTRUCTURE</span>
+              <span>Infrastructure</span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               {aiAnalysis.potentialImpact.infrastructure}
@@ -273,7 +273,7 @@ export const AiIntelligence: React.FC = () => {
           <div className="glass-panel rounded-2xl p-5 border border-red-500/20">
             <div className="flex items-center gap-2 text-red-400 font-mono text-xs font-bold mb-2">
               <Radio className="w-4 h-4" />
-              <span>EMERGENCY READINESS</span>
+              <span>Emergency Response</span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               {aiAnalysis.potentialImpact.emergencyServices}
@@ -282,13 +282,13 @@ export const AiIntelligence: React.FC = () => {
         </div>
       </div>
 
-      {/* AI Recommendations Action Center */}
+      {/* G. Recommendations */}
       <div className="glass-panel rounded-2xl p-6 border border-cyan-500/30 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-cyan-400" />
-              Autonomous Action Recommendations
+              G. Recommendations
             </h3>
             <p className="text-xs text-slate-400 font-mono mt-0.5">
               Direct field deployment commands synthesized by local triage algorithms
@@ -388,14 +388,14 @@ export const AiIntelligence: React.FC = () => {
 
       {/* Risk Breakdown & Incident-Specific Triage */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Risk Factor Radar Breakdown */}
+        {/* H. Risk Analysis */}
         <div className="glass-panel rounded-2xl p-6 border border-cyan-500/20 flex flex-col justify-between">
           <div>
             <h3 className="text-base font-bold text-white mb-1">
-              Risk Weight & Mathematical Derivation
+              H. Risk Analysis
             </h3>
             <p className="text-xs text-slate-400 font-mono mb-4">
-              Vector factor weights informing the {aiAnalysis.riskScore}/100 composite score
+              Vector factor weights and explanation for why the {aiAnalysis.riskScore}/100 score was calculated
             </p>
 
             <div className="h-60 w-full">
@@ -431,7 +431,7 @@ export const AiIntelligence: React.FC = () => {
         <div className="glass-panel rounded-2xl p-6 border border-cyan-500/20 flex flex-col justify-between">
           <div>
             <h3 className="text-base font-bold text-white mb-1">
-              Incident-Specific Neural Triage
+              I. Incident-Specific Analysis
             </h3>
             <p className="text-xs text-slate-400 font-mono mb-3">
               Inspect any active incident for targeted AI diagnostic recommendations
