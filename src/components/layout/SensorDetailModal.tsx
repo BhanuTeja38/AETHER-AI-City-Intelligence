@@ -10,7 +10,12 @@ export const SensorDetailModal: React.FC = () => {
   if (!selectedSensor) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sensor-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-sm animate-in fade-in duration-200"
+    >
       <div 
         className="glass-panel w-full max-w-xl rounded-2xl border border-cyan-500/30 shadow-2xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
@@ -27,7 +32,7 @@ export const SensorDetailModal: React.FC = () => {
               </span>
               <Badge type="sensorStatus" value={selectedSensor.status} withPulse />
             </div>
-            <h2 className="text-lg font-bold text-white">
+            <h2 id="sensor-modal-title" className="text-lg font-bold text-white">
               {selectedSensor.name}
             </h2>
             <div className="flex items-center gap-2 text-xs text-slate-400 mt-1">
@@ -41,9 +46,10 @@ export const SensorDetailModal: React.FC = () => {
 
           <button
             onClick={() => setSelectedSensor(null)}
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors"
+            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+            aria-label="Close sensor details"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 

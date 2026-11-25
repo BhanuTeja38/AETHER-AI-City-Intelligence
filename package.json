@@ -2,20 +2,35 @@
   "name": "aether-city-intelligence",
   "private": true,
   "version": "1.0.0",
+  "description": "AETHER – AI City Intelligence Engine: An intelligent smart-city monitoring and simulation platform that detects, monitors, and analyzes urban problems such as flooding, traffic congestion, road blockages, and emergencies. Visualizes affected areas on an interactive city map, uses simulated IoT sensor data, analyzes risks, and recommends actions to improve city safety and response.",
+  "keywords": [
+    "smart-city",
+    "ai-intelligence",
+    "iot-simulation",
+    "flooding-detection",
+    "traffic-congestion",
+    "road-blockages",
+    "emergency-response",
+    "urban-resilience",
+    "leaflet-map",
+    "hackathon-ready"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.468.0",
-    "recharts": "^2.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
     "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
@@ -28,6 +43,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "vitest": "^5.1.1"
   }
 }

@@ -28,15 +28,20 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-navy-900/95 border-l border-cyan-500/30 shadow-2xl backdrop-blur-xl flex flex-col animate-in slide-in-from-right duration-200">
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="notification-feed-title"
+      className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-navy-900/95 border-l border-cyan-500/30 shadow-2xl backdrop-blur-xl flex flex-col animate-in slide-in-from-right duration-200"
+    >
       {/* Header */}
       <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-navy-950/60">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+          <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30" aria-hidden="true">
             <Bell className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white">Emergency Dispatch Feed</h3>
+            <h3 id="notification-feed-title" className="text-base font-bold text-white">Emergency Dispatch Feed</h3>
             <p className="text-xs text-slate-400 font-mono">
               {alerts.filter(a => !a.isRead).length} unacknowledged alerts
             </p>
@@ -44,29 +49,34 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({ isOpen, on
         </div>
 
         <button 
+          type="button"
           onClick={onClose}
-          className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+          className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-colors"
+          aria-label="Close notifications feed"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
       </div>
 
       {/* Action Filters Bar */}
       <div className="px-4 py-2.5 bg-navy-850/60 border-b border-slate-800 flex items-center justify-between text-xs">
-        <label className="flex items-center gap-2 cursor-pointer text-slate-300">
+        <label htmlFor="unread-filter-toggle" className="flex items-center gap-2 cursor-pointer text-slate-300">
           <input
+            id="unread-filter-toggle"
             type="checkbox"
             checked={filterUnreadOnly}
             onChange={(e) => setFilterUnreadOnly(e.target.checked)}
-            className="rounded border-slate-700 bg-navy-900 text-cyan-500 focus:ring-0"
+            className="rounded border-slate-700 bg-navy-900 text-cyan-500 focus:ring-1 focus:ring-cyan-400"
           />
           <span>Unread only</span>
         </label>
 
         <div className="flex items-center gap-2">
           <button
+            type="button"
             onClick={clearAllAlerts}
-            className="flex items-center gap-1 text-slate-400 hover:text-red-400 transition-colors"
+            className="flex items-center gap-1 text-slate-400 hover:text-red-400 focus:ring-1 focus:ring-red-400 focus:outline-none transition-colors"
+            aria-label="Clear all notifications"
           >
             <Trash2 className="w-3.5 h-3.5" />
             <span>Clear All</span>

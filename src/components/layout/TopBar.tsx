@@ -51,24 +51,25 @@ export const TopBar: React.FC<TopBarProps> = ({ onMobileMenuToggle }) => {
 
   return (
     <>
-      <header className="sticky top-0 z-30 h-16 bg-navy-900/90 border-b border-cyan-500/20 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-4">
+      <header role="banner" className="sticky top-0 z-30 h-16 bg-navy-900/90 border-b border-cyan-500/20 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between gap-4">
         {/* Left: Mobile Toggle & City Selector */}
         <div className="flex items-center gap-3">
           <button
             onClick={onMobileMenuToggle}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 lg:hidden transition-colors"
-            aria-label="Toggle navigation"
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 lg:hidden focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-colors"
+            aria-label="Toggle navigation drawer"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-5 h-5" aria-hidden="true" />
           </button>
 
           {/* City Selector */}
           <div className="flex items-center gap-2">
-            <Globe2 className="w-4 h-4 text-cyan-400 hidden sm:block" />
+            <Globe2 className="w-4 h-4 text-cyan-400 hidden sm:block" aria-hidden="true" />
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="bg-navy-950/80 border border-slate-700/80 rounded-lg text-xs font-mono text-cyan-300 px-2.5 py-1.5 focus:outline-none focus:border-cyan-400 transition-colors"
+              aria-label="Select target metropolitan district"
+              className="bg-navy-950/80 border border-slate-700/80 rounded-lg text-xs font-mono text-cyan-300 px-2.5 py-1.5 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
             >
               <option value="Neo-Metropolis (Metro Bay)">Neo-Metropolis (Metro Bay)</option>
               <option value="Pacific Central Coast">Pacific Central Coast</option>
@@ -77,18 +78,19 @@ export const TopBar: React.FC<TopBarProps> = ({ onMobileMenuToggle }) => {
           </div>
 
           {/* Live Clock */}
-          <div className="hidden xl:flex items-center gap-1.5 text-xs font-mono text-slate-400 pl-2 border-l border-slate-800">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{currentTime}</span>
+          <div className="hidden xl:flex items-center gap-1.5 text-xs font-mono text-slate-400 pl-2 border-l border-slate-800" aria-label="System operational time">
+            <Clock className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
+            <span aria-live="off">{currentTime}</span>
           </div>
         </div>
 
         {/* Center: Global Search Bar */}
-        <div className="flex-1 max-w-md hidden md:block">
+        <div className="flex-1 max-w-md hidden md:block" role="search">
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
             <input
               type="text"
+              aria-label="Search incidents, sensors, or districts"
               placeholder="Search incidents, sensors, or districts (e.g. SENS-WL, Canal, Pier)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -100,14 +102,22 @@ export const TopBar: React.FC<TopBarProps> = ({ onMobileMenuToggle }) => {
         {/* Right: City Risk Score, Simulation Pill, Notifications, Quick Action */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* City Risk Score Pill */}
-          <div className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono ${riskColor}`}>
-            <ShieldAlert className="w-3.5 h-3.5" />
+          <div 
+            role="status"
+            aria-label={`City threat score: ${kpis.cityRiskScore} out of 100`}
+            className={`hidden sm:flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono ${riskColor}`}
+          >
+            <ShieldAlert className="w-3.5 h-3.5" aria-hidden="true" />
             <span className="font-semibold">THREAT: {kpis.cityRiskScore}/100</span>
           </div>
 
           {/* Simulation Status */}
-          <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-navy-950 border border-slate-800 text-[11px] font-mono">
-            <Radio className={`w-3 h-3 ${simulation.isRunning ? 'text-cyan-400 animate-pulse' : 'text-slate-500'}`} />
+          <div 
+            role="status"
+            aria-label={`Simulation engine status: ${simulation.isRunning ? 'Active' : 'Paused'}`}
+            className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-navy-950 border border-slate-800 text-[11px] font-mono"
+          >
+            <Radio className={`w-3 h-3 ${simulation.isRunning ? 'text-cyan-400 animate-pulse' : 'text-slate-500'}`} aria-hidden="true" />
             <span className="text-slate-400">SIM:</span>
             <span className={simulation.isRunning ? 'text-cyan-300 font-bold' : 'text-slate-400'}>
               {simulation.isRunning ? `ACTIVE [T+${simulation.tick}]` : 'PAUSED'}
@@ -117,38 +127,43 @@ export const TopBar: React.FC<TopBarProps> = ({ onMobileMenuToggle }) => {
           {/* Quick Add Incident */}
           <button
             onClick={() => setIsNewIncidentOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-medium transition-colors"
+            aria-label="Report or simulate new incident"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-mono font-medium focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-colors"
           >
-            <Plus className="w-3.5 h-3.5" />
+            <Plus className="w-3.5 h-3.5" aria-hidden="true" />
             <span className="hidden sm:inline">Report Incident</span>
           </button>
 
           {/* Audio Chime Toggle */}
           <button
             onClick={() => setSoundEnabled(!soundEnabled)}
+            aria-label={soundEnabled ? 'Mute alert chimes' : 'Unmute alert chimes'}
             title={soundEnabled ? 'Mute Alert Chimes' : 'Unmute Alert Chimes'}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 transition-colors"
+            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-navy-800 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-colors"
           >
-            {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+            {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" aria-hidden="true" /> : <VolumeX className="w-4 h-4 text-slate-500" aria-hidden="true" />}
           </button>
 
           {/* Notification Bell */}
           <button
             onClick={() => setIsNotificationsOpen(true)}
-            className="relative p-2 rounded-lg text-slate-300 hover:text-white hover:bg-navy-800 transition-colors"
-            aria-label="Alerts"
+            aria-label={`Emergency notifications feed (${unreadAlertsCount} unread)`}
+            aria-haspopup="dialog"
+            aria-expanded={isNotificationsOpen}
+            className="relative p-2 rounded-lg text-slate-300 hover:text-white hover:bg-navy-800 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-colors"
           >
-            <Bell className="w-4 h-4 text-slate-300" />
+            <Bell className="w-4 h-4 text-slate-300" aria-hidden="true" />
             {unreadAlertsCount > 0 && (
               <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-mono font-bold text-white shadow-glow-red animate-pulse">
+                <span className="sr-only">Unread alerts: </span>
                 {unreadAlertsCount}
               </span>
             )}
           </button>
 
           {/* User Profile Pill */}
-          <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center text-white font-mono text-xs font-bold ring-1 ring-cyan-400/50">
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800" role="group" aria-label="Operative identity">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center text-white font-mono text-xs font-bold ring-1 ring-cyan-400/50" aria-hidden="true">
               <User className="w-4 h-4" />
             </div>
             <div className="hidden 2xl:block text-left text-[11px] leading-tight">

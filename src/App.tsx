@@ -34,7 +34,13 @@ export const MainLayout: React.FC = () => {
         />
 
         {/* Scrollable Page Body (or full-height map) */}
-        <main className={`flex-1 overflow-x-hidden ${currentPage === 'map' ? 'overflow-y-hidden' : 'overflow-y-auto'}`}>
+        <main 
+          id="main-content" 
+          role="main" 
+          tabIndex={-1} 
+          aria-label="Operations Center Content"
+          className={`flex-1 overflow-x-hidden focus:outline-none ${currentPage === 'map' ? 'overflow-y-hidden' : 'overflow-y-auto'}`}
+        >
           {currentPage === 'overview' && <OverviewDashboard onNavigate={setCurrentPage} />}
           {currentPage === 'map' && <CityMap />}
           {currentPage === 'incidents' && <IncidentManagement />}

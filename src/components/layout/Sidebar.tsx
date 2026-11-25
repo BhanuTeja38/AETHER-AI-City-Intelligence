@@ -98,7 +98,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       {/* Sidebar Container */}
-      <aside className={`
+      <aside 
+        aria-label="Main Command Center Navigation"
+        className={`
         fixed inset-y-0 left-0 z-40 w-64 bg-navy-950 border-r border-cyan-500/20 
         transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static
         flex flex-col justify-between
@@ -107,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Top: Brand Header */}
         <div>
           <div className="h-16 px-5 border-b border-cyan-500/20 flex items-center gap-3 bg-navy-900/60">
-            <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-400 shadow-glow-cyan">
+            <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-400 shadow-glow-cyan" aria-hidden="true">
               <Layers className="w-5 h-5 text-cyan-400" />
               <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
             </div>
@@ -125,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
 
           {/* Navigation Links */}
-          <nav className="p-3 space-y-1.5">
+          <nav aria-label="Operations Rooms" className="p-3 space-y-1.5">
             <div className="px-3 py-2 text-[10px] font-mono tracking-widest uppercase text-slate-500">
               Operations Center
             </div>
@@ -138,9 +140,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`
                     w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium font-sans
-                    transition-all duration-200 group text-left
+                    transition-all duration-200 group text-left focus:ring-2 focus:ring-cyan-400 focus:outline-none
                     ${isActive 
                       ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/10 text-cyan-300 border border-cyan-500/40 shadow-glow-cyan font-semibold' 
                       : 'text-slate-400 hover:text-white hover:bg-navy-900/80 border border-transparent'}
